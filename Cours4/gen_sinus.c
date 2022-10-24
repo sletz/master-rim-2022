@@ -43,6 +43,7 @@ void process_sinus(float* output, int nframes)
 float process_one_sample_sinus()
 {
     // A COMPLETER
+    return 0.f;
 }
 
 void display_table()
