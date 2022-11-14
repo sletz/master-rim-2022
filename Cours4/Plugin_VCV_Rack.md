@@ -6,12 +6,14 @@
 
 - ouvrir un terminal, se placer dans le dossier du SDK (Rack-SDK) avec « **cd /path/to/SDK** » 
 
-- on est sur un Apple M1, mais VCV-RACK est encore en mode Intel (émulé avec Rosetta), il faut alors utiliser la commande **arch -x86_64 /bin/bash** pour faire la suite en mode Intel
+- on est sur un Apple M1, mais VCV-RACK est encore en mode Intel (émulé avec Rosetta), il faut alors utiliser la commande **arch -x86_64 /bin/bash** pour effectuer la suite des commandes ssen mode Intel
 
 - dans le terminal taper : **export RACK_DIR="/path/to/SDK"**
 
+- dans le terminal taper : **export PATH="/opt/homebrew/bin:$PATH"**
+
 - dans le terminal taper pour créer le plugin : **./helper.py createplugin MyPlugin**
-	
+
 - un nouveau dossier MyPlugin est créé, se placer dans ce dossier avec « **cd MyPlugin** » 
 
 - télécharger le fichier MyModule.svg depuis cette URL https://github.com/sletz/master-rim-2022/tree/master/vcvrack et le mettre dans le dossier MyPlugin/res 

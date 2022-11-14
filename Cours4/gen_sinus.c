@@ -13,12 +13,16 @@ int phase_sinus;
 void init_sinus(int sample_rate, int freq)
 {
     table_size_sinus = (int)((float)sample_rate / (float)freq);
+    printf("table_size_sinus: %d\n", table_size_sinus);
     
     /* Alloue dynamiquement une table. */
     table_sinus = (float*)malloc(table_size_sinus * sizeof(float));
     
     /* Remplit la table */
-    // A COMPLETER
+    int i;
+    for (i = 0; i < table_size_sinus; i++) {
+        table_sinus[i] = (float)sin(2.f * M_PI * i/(float)table_size_sinus);
+    }
     
     /* Initialise la phase */
     phase_sinus = 0;
@@ -34,24 +38,44 @@ void destroy_sinus()
 void process_sinus(float* output, int nframes)
 {
     int i;
-    for (i = 0 ; i < nframes; i++) {
-        // A COMPLETER
+    for (i = 0; i < nframes; i++) {
+        output[i] = table_sinus[phase_sinus];
+        phase_sinus = phase_sinus + 1;
+        if (phase_sinus == table_size_sinus) {
+            phase_sinus = 0;
+        }
     }
 }
 
 /* Retourne 1 echantillon et gestion de la phase */
 float process_one_sample_sinus()
 {
-    // A COMPLETER
-    return 0.f;
+    float res = table_sinus[phase_sinus];
+    phase_sinus = phase_sinus + 1;
+    if (phase_sinus == table_size_sinus) {
+        phase_sinus = 0;
+    }
+    return res;
 }
 
-void display_table()
+void display_sinus()
 {
-    // A COMPLETER
+    int i;
+    for (i = 0; i < table_size_sinus; i++) {
+        printf("Sample %f\n", table_sinus[i]);
+    }
 }
 
 int main()
 {
-    // A COMPLETER
+    init_sinus(44100, 200);
+    display_sinus();
+    
+    // Simuler l'audio: génère une séquence de 500 samples
+    printf("==================\n");
+    printf("Simuler l'audio\n");
+    int i;
+    for (i = 0; i < 500; i++) {
+        printf("Output %f\n", process_one_sample_sinus());
+    }
 }

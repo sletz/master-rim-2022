@@ -6,7 +6,7 @@ void square1()
 {
     float table[20];
     
-    printf("=======square========\n");
+    printf("=======square1========\n");
     
     int i;
     // Génération de la 1° moitié
@@ -14,7 +14,7 @@ void square1()
         table[i] = -1.f;
     }
     // Génération de la 2° moitié
-    for (i = 10; i < 20; i = i + 1) {
+    for (i = 20/2; i < 20; i = i + 1) {
         table[i] = 1.f;
     }
     
@@ -26,7 +26,7 @@ void square1()
 void square2()
 {
     float table[20];
-    printf("=======square1========\n");
+    printf("=======square2========\n");
     
     int i;
     for (i = 0; i < 20; i = i + 1) {
@@ -65,8 +65,8 @@ void sinus()
     int i;
     for (i = 0; i < 20; i++) {
         table[i] = sin(2.f * M_PI * i/19.f);
-       
     }
+    
     for (i = 0; i < 20; i++) {
         printf("Sample %f\n", table[i]);
     }
